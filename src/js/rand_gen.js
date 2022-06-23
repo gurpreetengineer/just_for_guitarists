@@ -1,3 +1,4 @@
+const fs = require('fs');
 const guitar_notes = require('../json/guitar_notes.json');
 
 const randomIntFromInterval = (min, max) => { // min and max included 
@@ -9,7 +10,7 @@ const questions_generator = (no_of_questions = 10) => {
   const questions_list = [];
 
   console.log(guitar_notes[4].notes[3].note_name, no_of_questions)
-  for (let q in [...Array(no_of_questions + 1).keys()]) {
+  for (let q in [...Array(no_of_questions).keys()]) {
     const string_number = randomIntFromInterval(0, no_of_strings - 1);
     const fret_number = randomIntFromInterval(0, no_of_frets - 1);
     questions_list.push({
@@ -19,6 +20,16 @@ const questions_generator = (no_of_questions = 10) => {
       "right_answer": guitar_notes[string_number].notes[fret_number].note_name
     })
   }
+  return questions_list;
 }
 
-questions_generator()
+const questions = questions_generator();
+
+
+fs.writeFile('../json/questions_list.json', JSON.stringify(questions), err => {
+  if (err) throw err;
+})
+
+export {
+  questions_generator
+}
