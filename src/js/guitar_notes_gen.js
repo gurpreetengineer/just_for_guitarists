@@ -36,6 +36,6 @@ const guitar_notes_generator = () => {
 
 const guitar_notes = guitar_notes_generator()
 
-fs.writeFile('../json/guitar_chords.json', JSON.stringify(guitar_notes), err => {
+fs.writeFile('../json/guitar_notes.json', JSON.stringify(guitar_notes), err => {
   if (err) throw err;
 })
