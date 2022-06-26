@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import questions_list from '../json/questions_list.json';
+import { GuitarType } from  './index';
 
 const Home = () => {
   const [userAnswer, setUserAnswer] = useState('');
@@ -42,6 +43,7 @@ const Home = () => {
 
   return (
     <div className="App">
+      <GuitarType />
       <table>
         <thead>
           <tr>
@@ -72,8 +74,8 @@ const Home = () => {
                   style={{ textTransform: 'uppercase' }}
                 ></input> */}
                 <select
-                  name="cars"
-                  id="cars"
+                  name="frets"
+                  id="frets"
                   onMouseOut={(event) => onMouseOutHandler(event, question)}
                 >
                   {list_of_frets.map((fret) => (
