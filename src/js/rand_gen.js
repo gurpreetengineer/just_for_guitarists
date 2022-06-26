@@ -14,10 +14,11 @@ const questions_generator = (no_of_questions = 10) => {
     const string_number = randomIntFromInterval(0, no_of_strings - 1);
     const fret_number = randomIntFromInterval(0, no_of_frets - 1);
     questions_list.push({
-      "question_no": Number(q) + 1,
+      number: Number(q) + 1,
       string_number: string_number + 1,
       fret_number: fret_number + 1,
-      "right_answer": guitar_notes[string_number].notes[fret_number].note_name
+      right_answer: guitar_notes[string_number].notes[fret_number].note_name,
+      user_answer: '',
     })
   }
   return questions_list;
